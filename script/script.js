@@ -1,5 +1,4 @@
 let isFinishDrillSaid = false;
-
 document.addEventListener('DOMContentLoaded', function () {
     hideRoundCounterSequence();
     const sliderRepsSequence = document.getElementById('numberRepsSequence');
@@ -62,14 +61,17 @@ document.addEventListener('DOMContentLoaded', function () {
         outputBarrier.innerHTML = sliderBarrier.value;
         number_of_barriers = sliderBarrier.value;
     });
+    // Sélection de l'élément HTML pour le slider
+
+
 
     const sliderMinTime = document.getElementById('timeBarrier');
     const outputMinTime = document.getElementById('value_time_min');
-    let time_min_value = 2;
+    /*let time_min_value = 2;
     sliderMinTime.addEventListener('input', function () {
         outputMinTime.innerHTML = sliderMinTime.value;
         time_min_value = sliderMinTime.value;
-    });
+    });*/
 
 
     const speech = new SpeechSynthesisUtterance();
@@ -121,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (isRunning) {
                                 inProgressRoundCounterSequence(i + 1);
                                 speech.text = generateRandomSequence();
-                                speech.voice = speechSynthesis.getVoices()[4];
+                                console.log(speech.text)
+                                speech.voice = speechSynthesis.getVoices()[1];
                                 speak(speech)
                                     .then(() => {
                                         // Appeler sayBarriers une fois que le discours est terminé
@@ -352,7 +355,6 @@ function updateRoundCounterSequence(i) {
 }
 
 function displayRoundCounterSequence(i) {
-    console.log("Display be ready :" + parseInt(i+1))
     const roundCounter = document.getElementById('roundCounterSequence');
     if (roundCounter) {
         roundCounter.innerHTML = "Round<span id=\"roundNumberSequence\">" + parseInt(i+1) + "</span> : Be ready"
@@ -388,4 +390,27 @@ function displayFinishRoundCounterSequence() {
         hideRoundCounterSequence()
     }, 4000);
 }
+
+// Sélection de tous les labels avec la classe "barrier-choose-time"
+const speedOptions = document.querySelectorAll('.barrier-choose-time');
+const selectedSpeedDiv = document.getElementById('selected-speed');
+let selectedLabelsCount = 0;
+speedOptions.forEach(label => {
+    label.addEventListener('click', () => {
+        const inputId = label.getAttribute('for');
+        const input = document.getElementById(inputId);
+        const selectedValue = input.value;
+
+        if (label.getAttribute('for') === "1") {
+            selectedSpeedDiv.style.left = '16.667%';
+        } else if (label.getAttribute('for') === "2") {
+            selectedSpeedDiv.style.left = '50%';
+        } else if (label.getAttribute('for') === "3") {
+            selectedSpeedDiv.style.left = '83.3333%';
+        }
+
+        console.log("Valeur sélectionnée :", selectedValue);
+    });
+});
+
 
