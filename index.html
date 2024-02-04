@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ajoutez un fichier CSS pour personnaliser le style si nécessaire -->
+    <script src="script.js" defer></script>
+    <script src="script-par-time.js" defer></script>
+</head>
+<body>
+
+<div class="container-tools">
+    <button id="stop">STOP</button>
+
+    <div class="container">
+        <button id="launch">Lancer la séquence</button>
+
+        <div id="roundCounterSequence" class="round-counter">
+            Round<span id="roundNumberSequence">1</span> : Be ready
+        </div>
+
+        <div class="slider-container">
+            <label for="numberRepsSequence">Choisissez un nombre de répétitions :</label>
+            <input type="range" id="numberRepsSequence" name="chiffre" min="1" max="20" value="10" step="1">
+            <p id="value_nb_rep_Sequence">10</p>
+        </div>
+
+        <div class="slider-container">
+            <label for="delay">Choisissez un délai avant le début :</label>
+            <input type="range" id="delay" name="chiffre" min="2000" max="4500" value="2500" step="1">
+            <p id="value_daley">2500</p>
+        </div>
+
+        <div class="slider-container">
+            <label for="numberBarrier">Choisissez un nombre de barrières théorique :</label>
+            <input type="range" id="numberBarrier" name="chiffre" min="0" max="100" value="5" step="1">
+            <p id="value_barrier">5</p>
+        </div>
+
+        <div class="slider-container">
+            <label for="timeBarrier">Débit de barrières (en secondes, entre votre sélection et votre sélection + 2 secondes)</label>
+            <input type="range" id="timeBarrier" name="chiffre" min="0.1" max="4" value="2" step="0.1">
+            <p id="value_time_min">2</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <button id="launch_par_time">Lancer par time</button>
+
+        <div id="roundCounter" class="round-counter">
+            Round<span id="roundNumber">1</span> : Be ready
+        </div>
+
+        <div class="slider-container">
+            <label for="numberReps">Choisissez un nombre de répétitions :</label>
+            <input type="range" id="numberReps" name="chiffre" min="1" max="20" value="10" step="1">
+            <p id="value_nb_rep">10</p>
+        </div>
+
+        <div class="par_time container-par-time">
+            <label for="parTimeLabel">Par time (en secondes) :</label>
+            <div class="time-container">
+                <button onclick="decreaseTime('input_par_time')">-</button>
+                <input id="input_par_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                <button onclick="increaseTime('input_par_time')">+</button>
+            </div>
+        </div>
+
+        <div class="delay_before_start container-par-time">
+            <label for="delayTimeLabel">Délais avant le début (en secondes) :</label>
+            <div class="time-container">
+                <button onclick="decreaseTime('input_delay_time')">-</button>
+                <input id="input_delay_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                <button onclick="increaseTime('input_delay_time')">+</button>
+            </div>
+        </div>
+
+        <div class="randomizer_delay container-par-time">
+            <label for="randomizerTimeLabel">Ajouter du temps maximal aléatoires avant le début (en secondes) :</label>
+            <div class="time-container">
+                <button onclick="decreaseTime('input_randomizer')">-</button>
+                <input id="input_randomizer" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                <button onclick="increaseTime('input_randomizer')">+</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
