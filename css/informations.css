@@ -1,0 +1,56 @@
+.gg-info {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+    border-radius: 40px
+}
+
+.gg-info::after,
+.gg-info::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    background: currentColor;
+    left: 7px
+}
+
+.gg-info::after {
+    bottom: 2px;
+    height: 8px
+}
+
+.gg-info::before {
+    height: 2px;
+    top: 2px
+}
+
+.explanation-container-sequence {
+    top: 2px;
+    position: relative;
+    width: 50%;
+
+    height: 2px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.explanation-container-sequence img {
+    max-width: 20%;
+    height: auto;
+}
+
+.explanation-container-sequence p {
+    font-size: 14px;
+}

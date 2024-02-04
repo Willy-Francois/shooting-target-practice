@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btn_stop.addEventListener('click', function (e) {
         hideRoundCounter();
-        var audio_end = new Audio('stop.mp3');
+        var audio_end = new Audio('misc/stop.mp3');
         audio_end.volume = 0.7;
         audio_end.play();
 
@@ -56,12 +56,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('input_par_time').addEventListener('input', function (event) {
         var inputValue = event.target.value;
+        // Vérifier si l'entrée est un chiffre, une virgule ou un point
+        if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
+            event.target.value = '3.0';
+        }
+    });
+
+
+    document.getElementById('input_delay_time').addEventListener('input', function (event) {
+        var inputValue = event.target.value;
 
         // Vérifier si l'entrée est un chiffre, une virgule ou un point
         if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
             event.target.value = '3.0';
         }
+    });
 
+
+    document.getElementById('input_randomizer').addEventListener('input', function (event) {
+        var inputValue = event.target.value;
+
+        // Vérifier si l'entrée est un chiffre, une virgule ou un point
+        if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
+            event.target.value = '3.0';
+        }
     });
 
     function playBeepSequence(i, par, start, random, nbRep) {
@@ -71,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(function () {
                 if (isRunning) {
-                    var audio_debut = new Audio('beep-debut.mp3');
+                    var audio_debut = new Audio('misc/beep-debut.mp3');
                     audio_debut.play();
                     inProgressRoundCounter(i+1);
 
                     setTimeout(function () {
                         if (isRunning) {
-                            var audio_end = new Audio('beep-fin.mp3');
+                            var audio_end = new Audio('misc/beep-fin.mp3');
                             audio_end.volume = 0.7;
                             audio_end.play();
 

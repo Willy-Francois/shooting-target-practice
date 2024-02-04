@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="./css/styles.css"> <!-- Ajoutez un fichier CSS pour personnaliser le style si nécessaire -->
-    <link rel="stylesheet" href="./css/slider-range.css"> <!-- Ajoutez un fichier CSS pour personnaliser le style si nécessaire -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/slider-range.css">
+    <link rel="stylesheet" href="./css/informations.css">
     <script src="script/script.js" defer></script>
+    <script src="script/script-informations.js" defer></script>
     <script src="script/script-par-time.js" defer></script>
     </head>
 <body>
@@ -14,7 +16,13 @@
 <div class="container-tools">
     <button id="stop">STOP</button>
 
-    <div class="container">
+    <div class="container sequence">
+        <div class="gg-info"></div>
+        <div class="explanation-container-sequence">
+            <img src="misc/cible-adaptive-one.jpg" alt="Cible Adaptive One">
+            <p>Texte d'explication</p>
+        </div>
+
         <button id="launch">Lancer la séquence</button>
 
         <div id="roundCounterSequence" class="round-counter">
@@ -22,15 +30,18 @@
         </div>
 
         <div class="slider-container">
-            <label for="numberRepsSequence">Choisissez un nombre de répétitions :</label>
-            <input type="range" id="numberRepsSequence" name="chiffre" min="1" max="20" value="10" step="1">
-            <p id="value_nb_rep_Sequence">10</p>
+            <label for="delay">Choisissez un délai avant le début :</label>
+            <div class="time-container">
+                <button onclick="decreaseTime('delay')">-</button>
+                <input id="delay" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="2.00">
+                <button onclick="increaseTime('delay')">+</button>
+            </div>
         </div>
 
         <div class="slider-container">
-            <label for="delay">Choisissez un délai avant le début :</label>
-            <input type="range" id="delay" name="chiffre" min="2000" max="4500" value="2500" step="1">
-            <p id="value_daley">2500</p>
+            <label for="numberRepsSequence">Choisissez un nombre de répétitions :</label>
+            <input type="range" id="numberRepsSequence" name="chiffre" min="1" max="20" value="10" step="1">
+            <p id="value_nb_rep_Sequence">10</p>
         </div>
 
         <div class="slider-container">
@@ -41,24 +52,12 @@
 
         <div class="slider-container">
             <label for="timeBarrier">Débit d'énonciation des barrières</label>
-            <div id="form-wrapper">
-                <div id="speed-option-slider">
-                    <input type="radio" name="debt-amount" id="1" value="1.3" required>
-                    <label class="barrier-choose-time" for="1" data-value="Lent"></label>
-                    <input type="radio" name="debt-amount" id="2" value="0.6" required>
-                    <label class="barrier-choose-time" for="2" data-value="Moyen"></label>
-                    <input type="radio" name="debt-amount" id="3" value="0.1" required>
-                    <label class="barrier-choose-time" for="3" data-value="Rapide"></label>
-                    <div id="selected-speed"></div>
-                </div>
+            <div class="button-container">
+                <button id="btn-lent" class="custom-button" value="1.2">Lent</button>
+                <button id="btn-moyen" class="custom-button" value="0.4">Moyen</button>
+                <button id="btn-rapide" class="custom-button" value="0.1">Rapide</button>
             </div>
         </div>
-
-        <!--<div class="slider-container">
-            <label for="timeBarrier">Débit de barrières (en secondes, entre votre sélection et votre sélection + 2 secondes)</label>
-            <input type="range" id="timeBarrier" name="chiffre" min="0.1" max="3" value="0.5" step="0.1">
-            <p id="value_time_min">2</p>
-        </div>-->
     </div>
 
     <div class="container">

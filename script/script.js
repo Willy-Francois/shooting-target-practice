@@ -1,6 +1,40 @@
 let isFinishDrillSaid = false;
+let timeout_value = 2.00
+let btn_moyen = document.getElementById('btn-moyen');
+let time_min_value = parseFloat(btn_moyen.value);
+const buttons = document.querySelectorAll('.custom-button');
+hideRoundCounterSequence();
+btn_moyen.classList.add('active');
+function deselectAllExcept(selectedButton) {
+    buttons.forEach(button => {
+        if (button !== selectedButton) {
+            button.classList.remove('active');
+        }
+    });
+}
+
+// Ajout d'un écouteur d'événement de clic à chaque bouton
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Désélectionne tous les boutons sauf celui cliqué
+        deselectAllExcept(button);
+
+        // Active le bouton cliqué
+        button.classList.toggle('active');
+        time_min_value = parseFloat(button.value);
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function () {
-    hideRoundCounterSequence();
+
+    document.getElementById('delay').addEventListener('input', function (event) {
+        var inputValue = event.target.value;
+        // Vérifier si l'entrée est un chiffre, une virgule ou un point
+        if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
+            event.target.value = '2.0';
+        }
+    });
+
     const sliderRepsSequence = document.getElementById('numberRepsSequence');
     const div_nb_rep_Sequence = document.getElementById('value_nb_rep_Sequence');
     let value_nb_rep_Sequence = 10;
@@ -16,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btn_stop.addEventListener('click', function (e) {
         hideRoundCounterSequence();
-        var audio_end = new Audio('stop.mp3');
+        var audio_end = new Audio('misc/stop.mp3');
         audio_end.volume = 0.7;
         audio_end.play();
 
@@ -44,16 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 
-
-    const slider = document.getElementById('delay');
-    const output = document.getElementById('value_daley');
-    let timeout_value = 2500;
-    // Mettre à jour la valeur affichée lors du déplacement du curseur
-    slider.addEventListener('input', function () {
-        output.innerHTML = slider.value;
-        timeout_value = slider.value;
-    });
-
     const sliderBarrier = document.getElementById('numberBarrier');
     const outputBarrier = document.getElementById('value_barrier');
     let number_of_barriers = 5;
@@ -61,29 +85,14 @@ document.addEventListener('DOMContentLoaded', function () {
         outputBarrier.innerHTML = sliderBarrier.value;
         number_of_barriers = sliderBarrier.value;
     });
-    // Sélection de l'élément HTML pour le slider
-
-
-
-    const sliderMinTime = document.getElementById('timeBarrier');
-    const outputMinTime = document.getElementById('value_time_min');
-    /*let time_min_value = 2;
-    sliderMinTime.addEventListener('input', function () {
-        outputMinTime.innerHTML = sliderMinTime.value;
-        time_min_value = sliderMinTime.value;
-    });*/
-
 
     const speech = new SpeechSynthesisUtterance();
 
-    // Afficher la valeur initiale
-    output.innerHTML = slider.value;
-
     btn_launch.addEventListener('click', async function (e) {
         if (!isRunning) {
+            timeout_value =  parseFloat(document.getElementById('delay').value)*1000;
             isRunning = true;
             displayRoundCounterSequence(0);
-
             try {
                 await saySequence(0, value_nb_rep_Sequence);
             } catch (error) {
@@ -119,11 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             await speak(speech);
                         }
 
+                        console.log("timeout_value :" + timeout_value + " / Rapidité : " + time_min_value);
                         setTimeout(function () {
                             if (isRunning) {
                                 inProgressRoundCounterSequence(i + 1);
                                 speech.text = generateRandomSequence();
-                                console.log(speech.text)
                                 speech.voice = speechSynthesis.getVoices()[1];
                                 speak(speech)
                                     .then(() => {
@@ -179,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             var randomBarrier = generateRandomBarrier();
                             await sayBarriers(randomBarrier, speech, count, countRepSequence, i);
                         }
-                    }, getRandomDelay(time_min_value));
+                    }, getRandomDelay(time_min_value)*1000);
                 } else {
                     if (isRunning) {
                         if (!isFinishDrillSaid) {
@@ -390,27 +399,4 @@ function displayFinishRoundCounterSequence() {
         hideRoundCounterSequence()
     }, 4000);
 }
-
-// Sélection de tous les labels avec la classe "barrier-choose-time"
-const speedOptions = document.querySelectorAll('.barrier-choose-time');
-const selectedSpeedDiv = document.getElementById('selected-speed');
-let selectedLabelsCount = 0;
-speedOptions.forEach(label => {
-    label.addEventListener('click', () => {
-        const inputId = label.getAttribute('for');
-        const input = document.getElementById(inputId);
-        const selectedValue = input.value;
-
-        if (label.getAttribute('for') === "1") {
-            selectedSpeedDiv.style.left = '16.667%';
-        } else if (label.getAttribute('for') === "2") {
-            selectedSpeedDiv.style.left = '50%';
-        } else if (label.getAttribute('for') === "3") {
-            selectedSpeedDiv.style.left = '83.3333%';
-        }
-
-        console.log("Valeur sélectionnée :", selectedValue);
-    });
-});
-
 
