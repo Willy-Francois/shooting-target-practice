@@ -31,26 +31,81 @@
     height: 2px;
     top: 2px
 }
-
 .explanation-container-sequence {
-    top: 2px;
-    position: relative;
-    width: 50%;
-
-    height: 2px;
-    transform: translateX(-50%);
+    z-index: 999;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-left: -5px;
+    position: absolute; /* Changement de position à relative */
+    width: 400px;
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    display: none;
+    display: none; /* Utilisation de flexbox */
+    align-items: flex-start; /* Alignement au début (en haut) */
+    flex-wrap: wrap; /* Permettre aux éléments enfants de passer à la ligne si nécessaire */
 }
 
 .explanation-container-sequence img {
-    max-width: 20%;
+    max-width: 100px;
     height: auto;
+    margin-right: 10px; /* Ajout d'une marge à droite de l'image pour l'espace */
 }
 
-.explanation-container-sequence p {
+.info-explanation {
+    max-width: 285px;
+}
+
+.text-explanation {
+    max-width: available;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: justify;
+}
+
+.title-explanation {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #b70000;
+}
+
+.title-explanation a {
+    color: #b70000;
+    text-decoration: underline;
+}
+
+.title-explanation a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.rule {
+    color: #b70000;
+    font-weight: bold;
+}
+
+.barrier {
+    color: black;
+    font-weight: bold;
+}
+
+ul {
+    color: #555555;
     font-size: 14px;
+    text-align: justify;
+    max-width: available;
+    margin: 0 20px 0 20px;
+}
+
+li {
+    list-style-type: disc;
+}
+
+#encre {
+    margin-right: 0; /* Ajout d'une marge à droite de l'image pour l'espace */
+    vertical-align: middle;
+    height: 15px;
+    width: auto;
 }

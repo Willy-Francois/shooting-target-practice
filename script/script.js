@@ -3,6 +3,10 @@ let timeout_value = 2.00
 let btn_moyen = document.getElementById('btn-moyen');
 let time_min_value = parseFloat(btn_moyen.value);
 const buttons = document.querySelectorAll('.custom-button');
+let isRunning = false; // Variable pour suivre l'état du programme
+const btn_stop = document.getElementById('stop');
+const btn_launch = document.getElementById('launch');
+
 hideRoundCounterSequence();
 btn_moyen.classList.add('active');
 function deselectAllExcept(selectedButton) {
@@ -27,26 +31,6 @@ buttons.forEach(button => {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    document.getElementById('delay').addEventListener('input', function (event) {
-        var inputValue = event.target.value;
-        // Vérifier si l'entrée est un chiffre, une virgule ou un point
-        if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
-            event.target.value = '2.0';
-        }
-    });
-
-    const sliderRepsSequence = document.getElementById('numberRepsSequence');
-    const div_nb_rep_Sequence = document.getElementById('value_nb_rep_Sequence');
-    let value_nb_rep_Sequence = 10;
-    // Mettre à jour la valeur affichée lors du déplacement du curseur
-    sliderRepsSequence.addEventListener('input', function () {
-        div_nb_rep_Sequence.innerHTML = sliderRepsSequence.value;
-        value_nb_rep_Sequence = sliderRepsSequence.value;
-    });
-
-    const btn_stop = document.getElementById('stop');
-    const btn_launch = document.getElementById('launch');
-    let isRunning = false; // Variable pour suivre l'état du programme
 
     btn_stop.addEventListener('click', function (e) {
         hideRoundCounterSequence();
@@ -55,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         audio_end.play();
 
         this.setAttribute('disabled', true);
-
         this.style.opacity = '0.5';
         this.style.cursor= 'not-allowed';
 
@@ -78,18 +61,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 
+    document.getElementById('delay').addEventListener('input', function (event) {
+        var inputValue = event.target.value;
+        // Vérifier si l'entrée est un chiffre, une virgule ou un point
+        if ((!/^\d*\.?\d{0,2}$/.test(inputValue) && event.data !== null) || inputValue>60) {
+            event.target.value = '2.0';
+        }
+    });
+
+    const sliderRepsSequence = document.getElementById('numberRepsSequence');
+    const div_nb_rep_Sequence = document.getElementById('value_nb_rep_Sequence');
+    let value_nb_rep_Sequence = 10;
+    // Mettre à jour la valeur affichée lors du déplacement du curseur
+    sliderRepsSequence.addEventListener('input', function () {
+        div_nb_rep_Sequence.innerHTML = sliderRepsSequence.value;
+        value_nb_rep_Sequence = sliderRepsSequence.value;
+    });
+
     const sliderBarrier = document.getElementById('numberBarrier');
     const outputBarrier = document.getElementById('value_barrier');
     let number_of_barriers = 5;
     sliderBarrier.addEventListener('input', function () {
         outputBarrier.innerHTML = sliderBarrier.value;
         number_of_barriers = sliderBarrier.value;
+        if(number_of_barriers==="0"){
+            buttons.forEach(button => {
+                button.setAttribute('disabled', true);
+                button.style.opacity = '0.5';
+                button.style.cursor= 'not-allowed';
+            });
+        }else{
+            buttons.forEach(button => {
+                button.removeAttribute('disabled');
+                button.style.opacity = '1';
+                button.style.cursor= 'pointer';
+            });
+        }
     });
 
     const speech = new SpeechSynthesisUtterance();
 
     btn_launch.addEventListener('click', async function (e) {
         if (!isRunning) {
+            isFinishDrillSaid = false;
             timeout_value =  parseFloat(document.getElementById('delay').value)*1000;
             isRunning = true;
             displayRoundCounterSequence(0);
@@ -128,12 +142,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             await speak(speech);
                         }
 
-                        console.log("timeout_value :" + timeout_value + " / Rapidité : " + time_min_value);
                         setTimeout(function () {
                             if (isRunning) {
                                 inProgressRoundCounterSequence(i + 1);
                                 speech.text = generateRandomSequence();
-                                speech.voice = speechSynthesis.getVoices()[1];
+                                speech.voice = speechSynthesis.getVoices()[4];
                                 speak(speech)
                                     .then(() => {
                                         // Appeler sayBarriers une fois que le discours est terminé
@@ -175,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function sayBarriers(randomBarriers, speech, count, countRepSequence, i) {
         if (isRunning) {
-            if (i < countRepSequence-1) {
+            if (i < countRepSequence) {
                 if (count <= number_of_barriers) {
                     setTimeout(async function () {
                         if (isRunning) {
@@ -188,26 +201,35 @@ document.addEventListener('DOMContentLoaded', function () {
                             var randomBarrier = generateRandomBarrier();
                             await sayBarriers(randomBarrier, speech, count, countRepSequence, i);
                         }
-                    }, getRandomDelay(time_min_value)*1000);
+                    }, getRandomDelay(time_min_value));
                 } else {
                     if (isRunning) {
-                        if (!isFinishDrillSaid) {
-                            speech.text = "Round terminé";
-                            speak(speech);
-                            isFinishDrillSaid = true;
-                        }
-
-                        updateRoundCounterSequence(i + 1);
-                        displayRoundCounterSequence(i + 1);
-
-                        isFinishDrillSaid = false;
-                        i = i+1
-
-                        setTimeout(async function () {
-                            if (isRunning) {
-                                saySequence(i, countRepSequence);
+                        if(i===countRepSequence-1){
+                            sequenceFinished(i, countRepSequence, speech)
+                        }else{
+                            if (!isFinishDrillSaid) {
+                                speech.text = "Round terminé";
+                                speak(speech);
+                                isFinishDrillSaid = true;
                             }
-                        }, 4000 + parseInt(timeout_value));
+
+                            updateRoundCounterSequence(i + 1);
+                            displayRoundCounterSequence(i + 1);
+
+                            isFinishDrillSaid = false;
+                            i = i+1
+
+                            let timeoutBeforeNextSequence = timeout_value;
+                            if(number_of_barriers!=="0"){
+                                timeoutBeforeNextSequence = 3000 + parseInt(timeout_value)
+                            }
+
+                            setTimeout(async function () {
+                                if (isRunning) {
+                                    saySequence(i, countRepSequence);
+                                }
+                            }, timeoutBeforeNextSequence);
+                        }
                     }
                 }
             } else {
@@ -264,25 +286,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     }else{
                         if(0.5 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.5625) {
                             //A
-                            barrierSequence += "A";
+                            barrierSequence += "Alpha";
                         }else if(0.5625 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.625) {
                             //1
                             barrierSequence += "1";
                         }else if(0.625 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.6875) {
                             //B
-                            barrierSequence += "B";
+                            barrierSequence += "Beta";
                         }else if(0.6875 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.75) {
                             //2
                             barrierSequence += "2";
                         }else if(0.75 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.8125) {
                             //C
-                            barrierSequence += "C";
+                            barrierSequence += "Charlie";
                         }else if(0.8125 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.875) {
                             //3
                             barrierSequence += "3";
                         }else if(0.875 <= numberOrLetterBarrier && numberOrLetterBarrier < 0.9375) {
                             //D
-                            barrierSequence += "D";
+                            barrierSequence += "Delta";
                         }else{
                             //4
                             barrierSequence += "4";

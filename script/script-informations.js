@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
             explanationContainer.style.display = 'none';
             sequenceInfoIsEnable = false;
         }else{
-            explanationContainer.style.display = 'block';
+            explanationContainer.style.display = 'flex';
+            explanationContainer.style.alignItems = 'center';
             sequenceInfoIsEnable = true;
         }
 

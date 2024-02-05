@@ -19,8 +19,20 @@
     <div class="container sequence">
         <div class="gg-info"></div>
         <div class="explanation-container-sequence">
-            <img src="misc/cible-adaptive-one.jpg" alt="Cible Adaptive One">
-            <p>Texte d'explication</p>
+            <img src="misc/cible-adaptive-one.gif" alt="Cible Adaptive One">
+            <div class="info-explanation">
+                <p class="title-explanation">Cible Adaptive One de chez <a href="https://www.cdtar.com/shop/adaptive-one-50-cibles-anti-reflets-82#attr=">CDTarget</a></p>
+                <p class="text-explanation"><a class="rule">Règles de la cible :</a> Une voix commencera par annoncer une couleur ou une forme géométrique, puis une direction. Par exemple, si la première séquence est <a class="barrier">Triangle Gauche</a>, il faudra traiter l'ensemble des triangles de la gauche vers la droite dans l'ordre.</p>
+
+            </div>
+            <p class="text-explanation"><a class="rule">Règles additionnelles :</a> Des <a class="barrier">barrières</a> peuvent être ajoutées pendant l'exercice à la suite de l'énonciation de la séquence :</p>
+            <ul>
+                <li><a class="barrier">Chiffres & Lettres :</a> 4 cases distinces situées dans les coins de la cible. Traiter le coin correspondant au chiffre ou à la lettre énoncé.</li>
+                <li><a class="barrier">Retour :</a> Si le mot 'Retour' est prononcé pendant la série, il faudra revenir en arrière d'un élément dans la séquence et reprendre à partir de celui-ci.</li>
+                <li><a class="barrier">Début :</a> Il faudra reprendre l'ensemble de la séquence depuis le début.</li>
+                <li><a class="barrier">Passe :</a> Sauter l'élément en cours, donc traiter directement le prochain élément.</li>
+                <li><a class="barrier">Encre :</a> Intérompre la séquence en cours afin de traiter la croix bleue inclinée <img id="encre" src="misc/encre.jpg" alt="Encre Croix Bleue Inclinée">, puis reprendre la séquence énoncée normalement.</li>
+            </ul>
         </div>
 
         <button id="launch">Lancer la séquence</button>
@@ -30,7 +42,7 @@
         </div>
 
         <div class="slider-container">
-            <label for="delay">Choisissez un délai avant le début :</label>
+            <label for="delay">Délai de la séquence :</label>
             <div class="time-container">
                 <button onclick="decreaseTime('delay')">-</button>
                 <input id="delay" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="2.00">
