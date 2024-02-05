@@ -4,8 +4,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 /* Set the size of the div element that contains the map */
+@font-face {
+    font-family: 'Azonix';
+    src: url('../misc/Azonix.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'AltoneTrial-Bold';
+    src: url('../misc/AltoneTrial-Bold.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'AltoneTrial-Regular';
+    src: url('../misc/AltoneTrial-Regular.ttf') format('opentype');
+}
+
 *{
-    font-family: 'Arial', sans-serif;
+    font-family: 'AltoneTrial-Regular', 'Arial', sans-serif;
     outline: none;
 }
 
@@ -33,10 +48,161 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    justify-content: center;
+}
+
+/*header-section*/
+header {
+    background: radial-gradient(circle at 70% 30%, #0f1a22, #000b13); /* Dégradé circulaire */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: #fbfdff; /* Couleur du texte de l'en-tête */
+    padding: 10px; /* Ajouter de l'espace autour du texte */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    z-index: 1000; /* Assurer que l'en-tête reste au-dessus du contenu */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#header-content {
+    display: flex;
+    width: 65%;
+    align-items: center;
+}
+
+#logo-home {
+    vertical-align: middle; /* Aligner le centre de l'image avec le texte */
+    margin-right: 10px; /* Ajouter une marge à droite de l'image pour l'espace */
+}
+
+.home-site {
+    font-family: 'AltoneTrial-Bold', sans-serif;
+    font-size: 35px;
+    margin: 0; /* Supprimer les marges par défaut du titre h1 */
+}
+
+#logo-home{
+    height: 50px;
+    width: auto;
+}
+
+.header-tabs {
+    display: flex;
+    flex-grow: 1; /* Permet à la div de prendre l'espace disponible */
+    justify-content: space-between; /* Aligner les onglets à droite */
+}
+
+
+.activity {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fbfdff;
+    flex-grow: 1; /* Chaque élément prendra autant d'espace que possible */
+    text-align: center; /* Centrer le texte horizontalement */
+    padding: 10px; /* Ajouter de l'espace autour du texte */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+    position: relative;
+}
+
+.activity::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 50px;
+    width: 0;
+    height: 3px;
+    background-color: #d55d4f;
+    transition: width 0.4s ease-in-out;
+}
+
+.activity:hover {
+    color: #d55d4f; /* Couleur du texte au survol */
+}
+
+.activity:hover::before {
+    width: 100%;
+}
+/*end header-section*/
+
+/*premiere de couverture*/
+.premiere {
+    overflow: hidden;
+    position: relative;
+    background: url('../misc/background.webp') center/cover no-repeat;
+    height: 850px;
+    width: 100%;
+    background-attachment: fixed;
+    /* ou contain, en fonction de vos préférences */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#silouhette{
+    top: 40%;
+    height: 850px;
+    width: auto;
+    position: absolute;
+    left: 45%;
+    z-index: 9;
+    transform: translate(0%);
+}
+
+#scope{
+    height: 400px;
+    width: auto;
+    position: absolute;
+    z-index: 9;
+    top: 100px;
+    left: 55%;
+}
+
+.title-homepage-container{
+    text-align: left;
+    position: absolute;
+    /*top: 44%;
+    left: 42%;*/
+    color: #ffffff; /* Couleur du texte, ajustez selon vos besoins */
+    left: 19%;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content : center
+}
+
+.big-title{
+    font-family: AltoneTrial-Bold, sans-serif;
+    font-size: 100px;
+    color: #fbfdff;
+}
+.small-title{
+    font-family: Azonix, serif;
+    font-size: 60px;
+    color: #d55d4f;
+}
+
+.small-text{
+    margin-bottom: 50px;
+    width: 722px;
+}
+
+.btn-advanced{
+    font-family: AltoneTrial-Bold, serif;
+    background-color: #d55d4f;
+    border-radius: 50px;
+    width: 300px;
+    height: 70px;
+}
+
+.btn-advanced:hover{
+    background-color: #d54737;
+}
+/*end premiere de couverture*/
 
 .container-tools {
     width:65%;
