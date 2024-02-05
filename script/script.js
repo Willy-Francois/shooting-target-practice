@@ -7,6 +7,24 @@ let isRunning = false; // Variable pour suivre l'état du programme
 const btn_stop = document.getElementById('stop');
 const btn_launch = document.getElementById('launch');
 
+// Récupérer l'élément contenant l'image et le texte
+const titleHomepageContainer = document.getElementsByClassName("title-homepage-container")[0];
+const parallaxContainer = document.getElementsByClassName("parallax-container")[0];
+
+// Écouter l'événement de défilement
+window.addEventListener("scroll", function () {
+    // Calculer la position de défilement
+    const scrollPosition = window.scrollY;
+    // Ajuster la position de l'image en fonction du défilement
+    titleHomepageContainer.style.transform = `translateY(${scrollPosition * 0.6}px)`;
+
+    // Calculer la position de défilement
+    const scrollPositionSilouhette = window.scrollY;
+    // Ajuster la position de l'image en fonction du défilement
+    parallaxContainer.style.transform = `translateY(${scrollPositionSilouhette * 0.3}px)`;
+});
+
+
 hideRoundCounterSequence();
 btn_moyen.classList.add('active');
 function deselectAllExcept(selectedButton) {
