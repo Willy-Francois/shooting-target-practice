@@ -19,6 +19,12 @@
     src: url('../misc/AltoneTrial-Regular.ttf') format('opentype');
 }
 
+@font-face {
+    font-family: 'AltoneTrial-RegularOblique';
+    src: url('../misc/AltoneTrial-RegularOblique.ttf') format('opentype');
+}
+
+
 *{
     font-family: 'AltoneTrial-Regular', 'Arial', sans-serif;
     outline: none;
@@ -192,6 +198,7 @@ header {
 }
 
 .btn-advanced{
+    margin-right: 20px;
     font-family: AltoneTrial-Bold, serif;
     background-color: #d55d4f;
     border-radius: 50px;
@@ -201,6 +208,75 @@ header {
 
 .btn-advanced:hover{
     background-color: #d54737;
+}
+
+.container-btn-advanced{
+    display: flex;
+    align-items: center;
+}
+
+.text-glyphes{
+    font-family: AltoneTrial-Bold, serif;
+}
+
+.text-small-italic{
+    font-family: AltoneTrial-RegularOblique, serif;
+    font-size: 10px;
+}
+
+.glyphes-line{
+    width: 70px;
+    height: 4px;
+    background-color: #d54737;
+}
+.glyphes-line-small{
+    margin-top: 4px;
+    width: 50px;
+    height: 2px;
+    background-color: #d54737;
+}
+
+.glyphes-line-smaller{
+    margin-top: 4px;
+    width: 30px;
+    height: 2px;
+    background-color: #d54737;
+}
+#glyphe-5{
+    top: 641px;
+    position: absolute;
+    height: 57px;
+    width: auto;
+    left: 132px;
+}
+#glyphe-1{
+    top: -35%;
+    position: relative;
+    height: 57px;
+    width: auto;
+    left: 35%;
+}
+
+#scope-dot{
+    filter: blur(2px);
+    height: 100%;
+    width: auto;
+    top: 30%;
+    position: absolute;
+    left: 49%;
+    z-index: 10;
+    transform: translate(0%);
+}
+
+#scope-outline{
+    filter: blur(4px);
+    height: 100%;
+    width: auto;
+    top: 30%;
+    position: absolute;
+    left: 49%;
+    z-index: 8;
+    transform: translate(0%);
 }
 /*end premiere de couverture*/
 
