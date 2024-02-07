@@ -9,145 +9,160 @@
     <link rel="stylesheet" href="./css/slider-range.css">
     <link rel="stylesheet" href="./css/informations.css">
     <script src="script/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js" defer></script>
     <script src="script/script-informations.js" defer></script>
+    <script src="script/carousel.js" defer></script>
     <script src="script/script-par-time.js" defer></script>
     </head>
 <body>
-<header>
-    <div id="header-content">
-        <img id="logo-home" src="misc/favicon.png" alt="Icon Website Home">
-        <h1 class="home-site">DRYFI.RE</h1>
-        <div class="header-tabs">
-            <a class="activity" href="">COGNITIF</a>
-            <a class="activity" href="">PAR TIME</a>
+    <header>
+        <div id="header-content">
+            <img id="logo-home" src="misc/favicon.png" alt="Icon Website Home">
+            <h1 class="home-site">DRYFI.RE</h1>
+            <div class="header-tabs">
+                <a class="activity" href="">COGNITIF</a>
+                <a class="activity" href="">PAR TIME</a>
+            </div>
         </div>
+    </header>
+    <div class="premiere">
+        <div class="hover-dark"></div>
+        <!--<img id="scope" src="misc/scope.png" alt="Reddot Scope">-->
+        <img class="parallax-container" id="silouhette" src="misc/silouhette.webp" alt="Silhouette">
+        <img class="parallax-container" id="scope-outline" src="misc/img/scope-outline.png" alt="Scope outline">
+        <img class="parallax-container" id="scope-dot" src="misc/img/scope-dot.png" alt="Scope outline">
+        <div class="title-homepage-container">
+            <div class="small-title">AMELIORER VOS</div>
+            <div class="big-title">COMPETENCES</div>
+            <div class="small-text">Bienvenue sur Dryfi.re, la destination en ligne ultime dédiée à l'entraînement au tir. Notre site offre une expérience complète pour les passionnés de tir, qu'ils soient novices ou experts, cherchant à améliorer leurs compétences et à parfaire leur précision.</div>
+            <div class="container-btn-advanced">
+                <button class="btn-advanced">COMMENCER MAINTENANT</button>
+                <div class="container-text-glyphes">
+                    <div class="text-small-italic">Ré</div>
+                    <div class="text-glyphes">APPRENEZ</div>
+                    <div class="glyphes-line"></div>
+                    <div class="glyphes-line-small"></div>
+                    <div class="glyphes-line-smaller"></div>
+                </div>
+            </div>
+        </div>
+        <img class="glyphe" id="glyphe-5" src="misc/glyphes/glyphe-5.png" alt="glyphe-5">
+        <img class="glyphe" id="glyphe-1" src="misc/glyphes/glyphe-1.png" alt="glyphe-1">
     </div>
-</header>
-<div class="premiere">
-    <div class="hover-dark"></div>
-    <!--<img id="scope" src="misc/scope.png" alt="Reddot Scope">-->
-    <img class="parallax-container" id="silouhette" src="misc/silouhette.webp" alt="Silhouette">
-    <img class="parallax-container" id="scope-outline" src="misc/img/scope-outline.png" alt="Scope outline">
-    <img class="parallax-container" id="scope-dot" src="misc/img/scope-dot.png" alt="Scope outline">
-    <div class="title-homepage-container">
-        <div class="small-title">AMELIORER VOS</div>
-        <div class="big-title">COMPETENCES</div>
-        <div class="small-text">Bienvenue sur Dryfi.re, la destination en ligne ultime dédiée à l'entraînement au tir. Notre site offre une expérience complète pour les passionnés de tir, qu'ils soient novices ou experts, cherchant à améliorer leurs compétences et à parfaire leur précision.</div>
-        <div class="container-btn-advanced">
-            <button class="btn-advanced">COMMENCER MAINTENANT</button>
-            <div class="container-text-glyphes">
-                <div class="text-small-italic">Ré</div>
-                <div class="text-glyphes">APPRENEZ</div>
-                <div class="glyphes-line"></div>
-                <div class="glyphes-line-small"></div>
-                <div class="glyphes-line-smaller"></div>
-            </div>
+
+    <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+        <div class="gallery-cell" id="item1">
+
         </div>
-    </div>
-    <img class="glyphe" id="glyphe-5" src="misc/glyphes/glyphe-5.png" alt="glyphe-5">
-    <img class="glyphe" id="glyphe-1" src="misc/glyphes/glyphe-1.png" alt="glyphe-1">
-</div>
+        <div class="gallery-cell is-selected" id="item2">
 
-<div class="container-tools">
-
-    <button id="stop">STOP</button>
-
-    <div class="container sequence">
-        <div class="gg-info"></div>
-        <div class="explanation-container-sequence">
-            <img src="misc/cible-adaptive-one.gif" alt="Cible Adaptive One">
-            <div class="info-explanation">
-                <p class="title-explanation">Cible Adaptive One de chez <a href="https://www.cdtar.com/shop/adaptive-one-50-cibles-anti-reflets-82#attr=">CDTarget</a></p>
-                <p class="text-explanation"><a class="rule">Règles de la cible :</a> Une voix commencera par annoncer une couleur ou une forme géométrique, puis une direction. Par exemple, si la première séquence est <a class="barrier">Triangle Gauche</a>, il faudra traiter l'ensemble des triangles de la gauche vers la droite dans l'ordre.</p>
-
-            </div>
-            <p class="text-explanation"><a class="rule">Règles additionnelles :</a> Des <a class="barrier">barrières</a> peuvent être ajoutées pendant l'exercice à la suite de l'énonciation de la séquence :</p>
-            <ul>
-                <li><a class="barrier">Chiffres & Lettres :</a> 4 cases distinces situées dans les coins de la cible. Traiter le coin correspondant au chiffre ou à la lettre énoncé.</li>
-                <li><a class="barrier">Retour :</a> Si le mot 'Retour' est prononcé pendant la série, il faudra revenir en arrière d'un élément dans la séquence et reprendre à partir de celui-ci.</li>
-                <li><a class="barrier">Début :</a> Il faudra reprendre l'ensemble de la séquence depuis le début.</li>
-                <li><a class="barrier">Passe :</a> Sauter l'élément en cours, donc traiter directement le prochain élément.</li>
-                <li><a class="barrier">Encre :</a> Intérompre la séquence en cours afin de traiter la croix bleue inclinée <img id="encre" src="misc/encre.jpg" alt="Encre Croix Bleue Inclinée">, puis reprendre la séquence énoncée normalement.</li>
-            </ul>
         </div>
+        <div class="gallery-cell" id="item3">
 
-        <button id="launch">Lancer la séquence</button>
-
-        <div id="roundCounterSequence" class="round-counter">
-            Round<span id="roundNumberSequence">1</span> : Be ready
-        </div>
-
-        <div class="slider-container">
-            <label for="delay">Délai de la séquence :</label>
-            <div class="time-container">
-                <button onclick="decreaseTime('delay')">-</button>
-                <input id="delay" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="2.00">
-                <button onclick="increaseTime('delay')">+</button>
-            </div>
-        </div>
-
-        <div class="slider-container">
-            <label for="numberRepsSequence">Choisissez un nombre de répétitions :</label>
-            <input type="range" id="numberRepsSequence" name="chiffre" min="1" max="20" value="10" step="1">
-            <p id="value_nb_rep_Sequence">10</p>
-        </div>
-
-        <div class="slider-container">
-            <label for="numberBarrier">Choisissez un nombre de barrières théorique :</label>
-            <input type="range" id="numberBarrier" name="chiffre" min="0" max="20" value="5" step="1">
-            <p id="value_barrier">5</p>
-        </div>
-
-        <div class="slider-container">
-            <label for="timeBarrier">Débit d'énonciation des barrières</label>
-            <div class="button-container">
-                <button id="btn-lent" class="custom-button" value="1.2">Lent</button>
-                <button id="btn-moyen" class="custom-button" value="0.4">Moyen</button>
-                <button id="btn-rapide" class="custom-button" value="0.1">Rapide</button>
-            </div>
         </div>
     </div>
 
-    <div class="container">
-        <button id="launch_par_time">Lancer par time</button>
 
-        <div id="roundCounter" class="round-counter">
-            Round<span id="roundNumber">1</span> : Be ready
-        </div>
+    <div class="container-tools">
 
-        <div class="slider-container">
-            <label for="numberReps">Choisissez un nombre de répétitions :</label>
-            <input type="range" id="numberReps" name="chiffre" min="1" max="20" value="10" step="1">
-            <p id="value_nb_rep">10</p>
-        </div>
+        <button id="stop">STOP</button>
 
-        <div class="par_time container-par-time">
-            <label for="parTimeLabel">Par time (en secondes) :</label>
-            <div class="time-container">
-                <button onclick="decreaseTime('input_par_time')">-</button>
-                <input id="input_par_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
-                <button onclick="increaseTime('input_par_time')">+</button>
+        <div class="container sequence">
+            <div class="gg-info"></div>
+            <div class="explanation-container-sequence">
+                <img src="misc/cible-adaptive-one.gif" alt="Cible Adaptive One">
+                <div class="info-explanation">
+                    <p class="title-explanation">Cible Adaptive One de chez <a href="https://www.cdtar.com/shop/adaptive-one-50-cibles-anti-reflets-82#attr=">CDTarget</a></p>
+                    <p class="text-explanation"><a class="rule">Règles de la cible :</a> Une voix commencera par annoncer une couleur ou une forme géométrique, puis une direction. Par exemple, si la première séquence est <a class="barrier">Triangle Gauche</a>, il faudra traiter l'ensemble des triangles de la gauche vers la droite dans l'ordre.</p>
+
+                </div>
+                <p class="text-explanation"><a class="rule">Règles additionnelles :</a> Des <a class="barrier">barrières</a> peuvent être ajoutées pendant l'exercice à la suite de l'énonciation de la séquence :</p>
+                <ul>
+                    <li><a class="barrier">Chiffres & Lettres :</a> 4 cases distinces situées dans les coins de la cible. Traiter le coin correspondant au chiffre ou à la lettre énoncé.</li>
+                    <li><a class="barrier">Retour :</a> Si le mot 'Retour' est prononcé pendant la série, il faudra revenir en arrière d'un élément dans la séquence et reprendre à partir de celui-ci.</li>
+                    <li><a class="barrier">Début :</a> Il faudra reprendre l'ensemble de la séquence depuis le début.</li>
+                    <li><a class="barrier">Passe :</a> Sauter l'élément en cours, donc traiter directement le prochain élément.</li>
+                    <li><a class="barrier">Encre :</a> Intérompre la séquence en cours afin de traiter la croix bleue inclinée <img id="encre" src="misc/encre.jpg" alt="Encre Croix Bleue Inclinée">, puis reprendre la séquence énoncée normalement.</li>
+                </ul>
+            </div>
+
+            <button id="launch">Lancer la séquence</button>
+
+            <div id="roundCounterSequence" class="round-counter">
+                Round<span id="roundNumberSequence">1</span> : Be ready
+            </div>
+
+            <div class="slider-container">
+                <label for="delay">Délai de la séquence :</label>
+                <div class="time-container">
+                    <button onclick="decreaseTime('delay')">-</button>
+                    <input id="delay" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="2.00">
+                    <button onclick="increaseTime('delay')">+</button>
+                </div>
+            </div>
+
+            <div class="slider-container">
+                <label for="numberRepsSequence">Choisissez un nombre de répétitions :</label>
+                <input type="range" id="numberRepsSequence" name="chiffre" min="1" max="20" value="10" step="1">
+                <p id="value_nb_rep_Sequence">10</p>
+            </div>
+
+            <div class="slider-container">
+                <label for="numberBarrier">Choisissez un nombre de barrières théorique :</label>
+                <input type="range" id="numberBarrier" name="chiffre" min="0" max="20" value="5" step="1">
+                <p id="value_barrier">5</p>
+            </div>
+
+            <div class="slider-container">
+                <label for="timeBarrier">Débit d'énonciation des barrières</label>
+                <div class="button-container">
+                    <button id="btn-lent" class="custom-button" value="1.2">Lent</button>
+                    <button id="btn-moyen" class="custom-button" value="0.4">Moyen</button>
+                    <button id="btn-rapide" class="custom-button" value="0.1">Rapide</button>
+                </div>
             </div>
         </div>
 
-        <div class="delay_before_start container-par-time">
-            <label for="delayTimeLabel">Délais avant le début (en secondes) :</label>
-            <div class="time-container">
-                <button onclick="decreaseTime('input_delay_time')">-</button>
-                <input id="input_delay_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
-                <button onclick="increaseTime('input_delay_time')">+</button>
-            </div>
-        </div>
+        <div class="container">
+            <button id="launch_par_time">Lancer par time</button>
 
-        <div class="randomizer_delay container-par-time">
-            <label for="randomizerTimeLabel">Ajouter du temps maximal aléatoires avant le début (en secondes) :</label>
-            <div class="time-container">
-                <button onclick="decreaseTime('input_randomizer')">-</button>
-                <input id="input_randomizer" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
-                <button onclick="increaseTime('input_randomizer')">+</button>
+            <div id="roundCounter" class="round-counter">
+                Round<span id="roundNumber">1</span> : Be ready
+            </div>
+
+            <div class="slider-container">
+                <label for="numberReps">Choisissez un nombre de répétitions :</label>
+                <input type="range" id="numberReps" name="chiffre" min="1" max="20" value="10" step="1">
+                <p id="value_nb_rep">10</p>
+            </div>
+
+            <div class="par_time container-par-time">
+                <label for="parTimeLabel">Par time (en secondes) :</label>
+                <div class="time-container">
+                    <button onclick="decreaseTime('input_par_time')">-</button>
+                    <input id="input_par_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                    <button onclick="increaseTime('input_par_time')">+</button>
+                </div>
+            </div>
+
+            <div class="delay_before_start container-par-time">
+                <label for="delayTimeLabel">Délais avant le début (en secondes) :</label>
+                <div class="time-container">
+                    <button onclick="decreaseTime('input_delay_time')">-</button>
+                    <input id="input_delay_time" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                    <button onclick="increaseTime('input_delay_time')">+</button>
+                </div>
+            </div>
+
+            <div class="randomizer_delay container-par-time">
+                <label for="randomizerTimeLabel">Ajouter du temps maximal aléatoires avant le début (en secondes) :</label>
+                <div class="time-container">
+                    <button onclick="decreaseTime('input_randomizer')">-</button>
+                    <input id="input_randomizer" type="text" inputmode="decimal" style="text-align: center" class="form-control form-number-5" value="3">
+                    <button onclick="increaseTime('input_randomizer')">+</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

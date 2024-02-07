@@ -49,7 +49,6 @@ buttons.forEach(button => {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
     btn_stop.addEventListener('click', function (e) {
         hideRoundCounterSequence();
         var audio_end = new Audio('misc/stop.mp3');
