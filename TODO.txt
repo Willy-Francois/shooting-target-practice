@@ -1,0 +1,3 @@
+TODO : Voices on iPhone are bizzard sa mere
+TODO : check voices on Android, et differentes langues
+TODO : responsive for iphone
