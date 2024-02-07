@@ -300,40 +300,96 @@ header {
     transform: translate(0%);
 }
 /*end premiere de couverture*/
-#item1{background-color: #b70000}
-#item2{background-color: #008CBA}
-#item3{background-color: chocolate}
+
 
 /* Style de base pour le carrousel */
 .gallery {
     margin-top : 30px;
-    background: #EEE;
 }
 
 .gallery-cell {
-    width: 75%;
-    height: 200px;
-    margin-right: 10px;
-    background: #8C8;
+    width: 45%;
+    height: 370px;
     counter-increment: gallery-cell;
 }
 
 .gallery-cell.is-selected {
-    background: #ED2;
 }
 
-/* cell number */
-.gallery-cell:before {
-    display: block;
+#item1{
+}
+#item2{
+}
+#item3{
+}
+
+.title-content-gallery{
+    font-family: AltoneTrial-Bold, sans-serif;
     text-align: center;
-    content: counter(gallery-cell);
-    line-height: 200px;
-    font-size: 80px;
-    color: white;
+    font-size: 30px;
+    margin-bottom: 25px;
 }
 
-/* Ajoutez des médias queries pour rendre la carte réactive si nécessaire */
+.gallery-cell:not(:last-child) {
+    border-right: 3px solid #d0d0d0; /* Ajoute un trait vertical entre les divs, sauf après le dernier */
+}
+.gallery-cell:not(:first-child) {
+    border-right: 3px solid #d0d0d0; /* Ajoute un trait vertical entre les divs, sauf après le dernier */
+}
 
+.content-gallery{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: available;
+    height: auto;
+    background-color: #555555;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+}
+
+.content {
+    color: #ffffff;
+    text-align: center;
+    width: 50%;
+    box-sizing: border-box; /* Assure que padding et border sont inclus dans la largeur */
+    padding: 10px; /* Ajustez selon le besoin pour un peu d'espace interne */
+}
+
+.content img {
+    margin-top: 25px;
+    width: 125px; /* Assure que l'image s'adapte à la largeur de .item */
+    height: auto; /* Maintient le ratio de l'image */
+}
+
+.content h2 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    font-family: Azonix, sans-serif;
+    text-align: center; /* Centre le texte du titre et du paragraphe */
+}
+
+.content p{
+    justify-content: center;
+    display: flex;
+    line-height: 300%;
+    margin: 0 auto; /* Centrer le paragraphe dans `.content`, si nécessaire */
+    font-size: 100%;
+    color: #c0c0c0;
+    width: 70%;
+}
+
+#exercices-1{
+    border-radius: 7px 0px 0px 7px;
+    background: url('../misc/img/background-gallery-1.webp') center/cover no-repeat;
+}
+
+#exercices-2{
+    border-radius: 0px 7px 7px 0px;
+    background: url('../misc/img/background-gallery-2.png') center/cover no-repeat;
+}
 /*End Carrousselle*/
 
 .container-tools {

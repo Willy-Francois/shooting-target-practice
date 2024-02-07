@@ -2,6 +2,23 @@ const carousel = document.getElementById('carousel');
 let currentIndex = 1; // Commence par la div du milieu
 console.log("caroussel")
 
+document.addEventListener('DOMContentLoaded', function() {
+    var contentGalleries = document.querySelectorAll('.content-gallery');
+    var maxHeight = 0;
+
+    // Trouver la hauteur maximale
+    contentGalleries.forEach(function(gallery) {
+        if (gallery.offsetHeight > maxHeight) {
+            maxHeight = gallery.offsetHeight;
+        }
+    });
+
+    // Appliquer la hauteur maximale à tous les éléments
+    contentGalleries.forEach(function(gallery) {
+        gallery.style.height = maxHeight + 'px';
+    });
+});
+
 
 document.getElementById('navigateLeft').addEventListener('click', function() {
     navigate('left');
